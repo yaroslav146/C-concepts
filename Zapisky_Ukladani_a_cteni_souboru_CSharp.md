@@ -387,12 +387,16 @@ catch (Exception ex)
 try
 {
     string obsah = File.ReadAllText("neexistujici.txt");
-
     Console.WriteLine(obsah);
 }
-catch (Exception ex)
+catch (FileNotFoundException ex)
 {
-    Console.WriteLine("Výjimka: " + ex.Message);
+    Console.WriteLine("Soubor nenalezen: " + ex.Message);
+}
+// Ano, dají se kombinovat příkazy pass
+catch (... ex)
+{
+    Console.WriteLine("...: " + ex.Message);
 }
 ```
 
