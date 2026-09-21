@@ -336,6 +336,8 @@ string cesta = "A\\B\\C\\priklad.txt";
 
 Převede cestu na **absolutní cestu**.
 
+A\B\C\priklad.txt    >>>    C:\Users\Yaroslav\Documents\A\B\C\priklad.txt
+
 ```csharp
 string cesta = Path.Combine(
     "A",
