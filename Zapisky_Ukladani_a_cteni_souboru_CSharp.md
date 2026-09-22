@@ -393,7 +393,7 @@ catch (FileNotFoundException ex)
 {
     Console.WriteLine("Soubor nenalezen: " + ex.Message);
 }
-// Ano, dají se kombinovat příkazy pass
+// Ano, dají se kombinovat příkazy catch
 catch (... ex)
 {
     Console.WriteLine("...: " + ex.Message);
