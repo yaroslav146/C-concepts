@@ -545,3 +545,4 @@ GetFullPath()    → vytvoří absolutní cestu
 ```text
 → ošetření chyb
 ```
+![](https://scontent-prg1-1.xx.fbcdn.net/v/t1.15752-9/833271007_1402541305324999_7225774309289545538_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=fc17b8&_nc_ohc=trXgyfp7qF4Q7kNvwEoQkDc&_nc_oc=AdodaFYnxMLq3_uBH9S2BITrjk3nwe4eIIhtj6EJ7TthWoBwoCY1FL9YOIRC8iK1LKY&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_ss=7b6a8&oh=03_Q7cD6gHEZC28WHaIixb-DoB7uuJYdegNysvfSY2tNPnfJ_5Pzw&oe=6AEDD9B5)
