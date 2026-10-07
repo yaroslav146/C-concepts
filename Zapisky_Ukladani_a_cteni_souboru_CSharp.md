@@ -1,4 +1,20 @@
-# 📁 Ukládání a čtení souborů v C#
+# Ukládání a čtení souborů v C#
+
+## Navigace
+
+- [Základní teorie](#1-základní-teorie)
+- [Typy souborů](#2-typy-souborů)
+- [Způsoby práce se soubory v C#](#3-způsoby-práce-se-soubory-v-c)
+- [Třída `File`](#4-třída-file)
+- [Direktiva `using`](#5-using)
+- [`StreamWriter`](#6-streamwriter)
+- [`StreamReader`](#7-streamreader)
+- [Třída `Path`](#8-třída-path)
+- [Výjimky (`Exception`)](#9-výjimky-exception)
+- [ Ošetření výjimek `try` / `catch`](#10-try--catch)
+- [ Nejčastější výjimky](#11-nejčastější-výjimky)
+- [ NEJDŮLEŽITĚJŠÍ KÓD](#12-nejdůležitější-kód)
+- [ Celkový přehled](#13-celkový-přehled)
 
 ##  1. Základní teorie
 
@@ -37,7 +53,7 @@ Např.:
 
 ---
 
-# 🧰 3. Způsoby práce se soubory v C#
+# 3. Způsoby práce se soubory v C#
 
 Nejdůležitější jsou:
 
@@ -56,7 +72,7 @@ Nejdůležitější jsou:
 
 ---
 
-# 📁 4. Třída `File`
+# 4. Třída `File`
 
 Nejdříve:
 
@@ -152,7 +168,7 @@ File.Move(puvodniCesta, novaCesta);
 
 ---
 
-# 🔄 5. `using`
+# 5. `using`
 
 `using` zajistí správné uvolnění zdroje po dokončení práce.
 
@@ -170,7 +186,7 @@ Po skončení `using` se `StreamWriter` automaticky uvolní a soubor se zavře.
 
 ---
 
-# ✏️ 6. `StreamWriter`
+# 6. `StreamWriter`
 
 `StreamWriter` slouží k **zápisu textu do souboru**.
 
@@ -217,35 +233,37 @@ Výsledek:
 Ahoj světe!
 ```
 
-##  Zápis proměnné
-
-```csharp
-string jmeno = "Yaroslav";
-
-using (StreamWriter writer = new StreamWriter(cesta))
-{
-    writer.WriteLine(jmeno);
-}
-```
-
 ---
 
-# 📖 7. `StreamReader`
+# 7. `StreamReader`
 
 `StreamReader` slouží ke **čtení textu ze souboru**.
 
 Výhodou je postupné čtení – nemusíme načíst celý soubor najednou.
 
+### Verze A
+
 ```csharp
 using (StreamReader reader = new StreamReader(cesta))
 {
-    string? radek = reader.ReadLine();
+    string? radek = reader.ReadLine(); // nacte (a ulozi) prvni radek 
 
-    while (radek != null)
+    while (radek != null) // dokud radek neni null pracuj
     {
         Console.WriteLine(radek);
+        radek = reader.ReadLine(); // nacte (a ulozi) dalsi radek
+    }
+}
+```
 
-        radek = reader.ReadLine();
+### Verze H (jako Halfar) ` tá lepší`
+```csharp
+using (StreamReader reader = new StreamReader(cesta))
+{
+    string? radek; // vytvarime proměnou radek | ? - promena muze byt null
+    while ((radek = reader.ReadLine()) != null) // porad nacitame dalsi radek dokud neskonci soubor (dostaneme hodnotu null)
+    {
+    Console.WriteLine(radek); // vypis
     }
 }
 ```
@@ -264,47 +282,9 @@ Když už žádný další řádek není, vrátí:
 null
 ```
 
-##  Čtení celého souboru po řádcích
-
-Nejdůležitější konstrukce:
-
-```csharp
-using (StreamReader reader = new StreamReader(cesta))
-{
-    string? radek = reader.ReadLine();
-
-    while (radek != null)
-    {
-        Console.WriteLine(radek);
-
-        radek = reader.ReadLine();
-    }
-}
-```
-
-###  Princip
-
-```text
-ReadLine()
-    ↓
-načte řádek
-    ↓
-radek != null ?
-    ↓
-ANO → zpracuj řádek
-    ↓
-ReadLine()
-    ↓
-další řádek
-    ↓
-...
-    ↓
-null → konec souboru
-```
-
 ---
 
-# 🛣️ 8. Třída `Path`
+# 8. Třída `Path`
 
 `Path` slouží k vytváření a práci se **souborovými cestami**.
 
@@ -352,7 +332,7 @@ Console.WriteLine(absolutniCesta);
 
 ---
 
-# ⚠️ 9. Výjimky (`Exception`)
+# 9. Výjimky (`Exception`)
 
 Výjimka = chyba nebo neočekávaný stav během běhu programu.
 
@@ -366,7 +346,7 @@ Při práci se soubory může nastat například:
 
 ---
 
-# 🛡️ 10. `try` / `catch`
+# 10. `try` / `catch`
 
 Používá se pro **ošetření výjimek**.
 
@@ -416,7 +396,7 @@ zpracování chyby
 
 ---
 
-# ❗ 11. Nejčastější výjimky
+# 11. Nejčastější výjimky
 
 | Výjimka | Význam |
 |---|---|
@@ -428,7 +408,7 @@ zpracování chyby
 
 ---
 
-# 🎯 12. NEJDŮLEŽITĚJŠÍ KÓD
+# 12. NEJDŮLEŽITĚJŠÍ KÓD
 
 ##  Zapsat celý text
 
@@ -448,7 +428,7 @@ File.AppendAllText(cesta, text);
 string obsah = File.ReadAllText(cesta);
 ```
 
-##  Zkontrolovat soubor
+##  Zkontrolovat existenci souboru
 
 ```csharp
 if (File.Exists(cesta))
