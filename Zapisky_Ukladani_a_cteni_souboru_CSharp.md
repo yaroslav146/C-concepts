@@ -319,15 +319,22 @@ Převede cestu na **absolutní cestu**.
 A\B\C\priklad.txt    >>>    C:\Users\Yaroslav\Documents\A\B\C\priklad.txt
 
 ```csharp
+string cesta = (@"A\B\C\priklad.txt");
+string absolutniCesta = Path.GetFullPath(cesta); // soubor uz musi existovat jínak se vrací chyba
+Console.WriteLine(absolutniCesta); // vraci celou cestu souboru
+```
+
+
+##  `Environment.SpecialFolder`
+
+Převede cestu na **absolutní cestu**.
+
+priklad.txt    >>>    C:\Users\Yaroslav\Documents\priklad.txt
+
+```csharp
 string cesta = Path.Combine(
-    "A",
-    "B",
-    "priklad.txt"
-);
-
-string absolutniCesta = Path.GetFullPath(cesta);
-
-Console.WriteLine(absolutniCesta);
+    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), // najde a ulozi cestu do slozky Documents
+    "nazev.txt"); // nazev vytvořeneho souboru
 ```
 
 ---
