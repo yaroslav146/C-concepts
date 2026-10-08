@@ -327,7 +327,7 @@ Console.WriteLine(absolutniCesta); // vraci celou cestu souboru
 
 ##  `Environment.SpecialFolder`
 
-Převede cestu na **absolutní cestu**.
+Nálezne cestu a vytvoři soubor 
 
 priklad.txt    >>>    C:\Users\Yaroslav\Documents\priklad.txt
 
