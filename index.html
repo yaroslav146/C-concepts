@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="cs">
+<html lang="cs" data-theme="sepia">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8fafc">
+  <meta name="theme-color" content="#161310">
   <title>C# — studijní kniha</title>
   <style>
     :root {
@@ -154,15 +154,24 @@
     .sidebar {
       position: sticky;
       top: 0;
+      display: flex;
+      flex-direction: column;
       height: 100vh;
-      overflow-y: auto;
+      overflow: hidden;
       padding: 22px 16px 24px;
       background: var(--sidebar-bg);
       border-right: 1px solid var(--line);
       transition: background-color .22s ease, border-color .22s ease;
       scrollbar-width: none;
     }
+    #navigation {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
     .sidebar::-webkit-scrollbar,
+    #navigation::-webkit-scrollbar,
     .table-scroll::-webkit-scrollbar,
     pre::-webkit-scrollbar { display: none; }
 
@@ -353,7 +362,8 @@
 
     /* Theme Settings */
     .sidebar-settings {
-      margin: 22px 4px 0;
+      flex-shrink: 0;
+      margin: auto 4px 0;
       padding-top: 16px;
       border-top: 1px solid var(--line);
     }
@@ -402,16 +412,12 @@
     .app.sidebar-collapsed .search-wrap,
     .app.sidebar-collapsed .group-title,
     .app.sidebar-collapsed .chapter-link > span:last-child,
-    .app.sidebar-collapsed .empty-search,
-    .app.sidebar-collapsed .settings-title { display: none; }
+    .app.sidebar-collapsed .empty-search { display: none; }
     .app.sidebar-collapsed .brand-toggle { flex-basis: 100%; order: 2; margin-top: 10px; }
     .app.sidebar-collapsed .chapter-link { justify-content: center; padding: 9px 2px; }
     .app.sidebar-collapsed .chapter-number { min-width: 0; }
     .app.sidebar-collapsed .chapter-link.done .chapter-number::after { margin-left: 2px; }
-    .app.sidebar-collapsed .sidebar-settings { margin: 18px 0 0; padding-top: 12px; }
-    .app.sidebar-collapsed .theme-options { grid-template-columns: 1fr; gap: 6px; }
-    .app.sidebar-collapsed .theme-option { width: 38px; min-height: 36px; justify-self: center; font-size: 0; }
-    .app.sidebar-collapsed .theme-option .theme-icon { margin: 0; font-size: 15px; }
+    .app.sidebar-collapsed .sidebar-settings { display: none; }
 
     /* Main Content & Sticky Topbar */
     main {
@@ -737,6 +743,16 @@
     .file-label:hover { background: var(--accent-hover); }
     .file-label input { display: none; }
 
+    .kralik-walker {
+      position: fixed;
+      z-index: 2;
+      left: 70vw;
+      bottom: 0px;
+      width: clamp(56px, 8vw, 88px);
+      pointer-events: none;
+    }
+    .kralik { display: block; width: 100%; height: auto; }
+
     /* Responsive */
     @media (max-width: 820px) {
       .app { grid-template-columns: 1fr; }
@@ -747,15 +763,10 @@
       .app.sidebar-collapsed .progress,
       .app.sidebar-collapsed .search-wrap,
       .app.sidebar-collapsed .group-title,
-      .app.sidebar-collapsed .chapter-link > span:last-child,
-      .app.sidebar-collapsed .settings-title { display: revert; }
+      .app.sidebar-collapsed .chapter-link > span:last-child { display: revert; }
       .app.sidebar-collapsed .brand-toggle { flex: 0 0 30px; order: initial; margin-top: 0; }
       .app.sidebar-collapsed .chapter-link { justify-content: flex-start; padding: 8px 10px; }
       .app.sidebar-collapsed .chapter-number { min-width: 24px; }
-      .app.sidebar-collapsed .sidebar-settings { margin: 22px 4px 0; padding-top: 16px; }
-      .app.sidebar-collapsed .theme-options { grid-template-columns: repeat(3, 1fr); gap: 6px; }
-      .app.sidebar-collapsed .theme-option { width: auto; min-height: 34px; justify-self: stretch; font-size: 11.5px; }
-      .app.sidebar-collapsed .theme-option .theme-icon { margin-right: 4px; font-size: 11.5px; }
 
       .sidebar {
         display: none;
@@ -766,7 +777,7 @@
         width: min(320px, 88vw);
         box-shadow: 20px 0 50px rgba(0, 0, 0, 0.25);
       }
-      .sidebar.open { display: block; }
+      .sidebar.open { display: flex; }
       main { padding: 0 14px 36px; }
       .topbar { margin: 0 auto 14px; padding: 12px 2px; }
       .menu-button { display: block; }
@@ -807,8 +818,8 @@
       <section class="sidebar-settings" aria-label="Nastavení vzhledu">
         <h2 class="settings-title">Vzhled</h2>
         <div class="theme-options" role="radiogroup" aria-label="Barevný motiv">
-          <button class="theme-option" type="button" role="radio" data-theme-option="light" aria-checked="true" title="Světlý motiv"><span class="theme-icon" aria-hidden="true">☼</span>Bright</button>
-          <button class="theme-option" type="button" role="radio" data-theme-option="sepia" aria-checked="false" title="Teplý motiv"><span class="theme-icon" aria-hidden="true">◐</span>Warm</button>
+          <button class="theme-option" type="button" role="radio" data-theme-option="light" aria-checked="false" title="Světlý motiv"><span class="theme-icon" aria-hidden="true">☼</span>Bright</button>
+          <button class="theme-option" type="button" role="radio" data-theme-option="sepia" aria-checked="true" title="Teplý motiv"><span class="theme-icon" aria-hidden="true">◐</span>Warm</button>
           <button class="theme-option" type="button" role="radio" data-theme-option="dark" aria-checked="false" title="Tmavý motiv"><span class="theme-icon" aria-hidden="true">☾</span>Dark</button>
         </div>
       </section>
@@ -822,6 +833,7 @@
       <div id="book"></div>
     </main>
   </div>
+  <div class="kralik-walker" aria-hidden="true"><img class="kralik" src="kralik.gif" alt=""></div>
   <script>
     (() => {
       const sourceName = "mistrove%20zapisy.md";
@@ -831,6 +843,8 @@
       const sidebar = document.getElementById("sidebar");
       const app = document.getElementById("app");
       const sidebarToggle = document.getElementById("sidebar-toggle");
+      const kralikWalker = document.querySelector(".kralik-walker");
+      const kralik = kralikWalker.querySelector(".kralik");
       const themeOptions = [...document.querySelectorAll("[data-theme-option]")];
       const doneKey = "csharp-book-completed-v1";
       const themeKey = "csharp-book-theme-v1";
@@ -838,6 +852,44 @@
       let chapters = [];
       let activeIndex = 0;
       let completed = new Set();
+
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        let position = 0;
+        let direction = 1;
+        let previousTime = 0;
+
+        function walkKralik(time) {
+          if (previousTime) {
+            const elapsed = Math.min((time - previousTime) / 1000, 0.05);
+            const maxPosition = Math.max(
+              0,
+              window.innerWidth - 12 - window.innerWidth * (7 / 10) - kralikWalker.offsetWidth
+            );
+            if (maxPosition === 0) {
+              position = 0;
+            } else {
+              position += direction * 70 * elapsed;
+
+              while (position > maxPosition || position < 0) {
+                if (position > maxPosition) {
+                  position = maxPosition - (position - maxPosition);
+                  direction = -1;
+                } else {
+                  position = -position;
+                  direction = 1;
+                }
+              }
+            }
+
+            kralikWalker.style.transform = `translateX(${position}px)`;
+            kralik.style.transform = `scaleX(${direction})`;
+          }
+          previousTime = time;
+          requestAnimationFrame(walkKralik);
+        }
+
+        requestAnimationFrame(walkKralik);
+      }
 
       try { completed = new Set(JSON.parse(localStorage.getItem(doneKey) || "[]")); } catch {}
 
@@ -862,10 +914,10 @@
       }
 
       try {
-        setTheme(localStorage.getItem(themeKey) || "light", false);
+        setTheme(localStorage.getItem(themeKey) || "sepia", false);
         setSidebarCollapsed(localStorage.getItem(collapsedKey) === "true", false);
       } catch {
-        setTheme("light", false);
+        setTheme("sepia", false);
         setSidebarCollapsed(false, false);
       }
 
