@@ -1,4 +1,4 @@
-# C# – kompletní zápisky
+а# C# – kompletní zápisky
 
 > Stručný přehled všech témat z dodaného materiálu. U každého tématu jsou základní pojmy, důležitá syntaxe a nejčastější chyby.
 
@@ -8,8 +8,8 @@
 1. [Vstupy a výstupy](#1-vstupy-a-výstupy)
 2. [Proměnné a datové typy](#2-proměnné-a-datové-typy)
 3. [Operátory a výpočty](#3-operátory-a-výpočty)
-4. [Podmínky – if, else, else if](#4-podmínky-if-else-else-if)
-5. [Podmínka switch](#5-podmínka-switch)
+4. [Podmínky – if, else, else if](#4-Podmínky-if-else-else-if)
+5. [Podmínka switch](#5-podmínka-switch) 
 6. [Cyklus for](#6-cyklus-for)
 7. [Cykly while a do-while](#7-cykly-while-a-do-while)
 8. [Generování náhodných čísel](#8-generování-náhodných-čísel)
@@ -95,6 +95,7 @@ Console.WriteLine($"Ahoj {jmeno}!");
 ```
 
 > **Pozor:** C# rozlišuje velká a malá písmena. Piš `Console.WriteLine`, ne `console.writeline`. Příkaz ukonči středníkem. Bez `$` se `{jmeno}` vypíše doslova.
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/operators/arithmetic-operators).
 
 ---
 
@@ -165,6 +166,8 @@ Math.Round(cislo, MidpointRounding.AwayFromZero);
 ```
 
 > **Časté chyby:** `Console.ReadLine()` není číslo, musí se převést. `char` používá apostrofy (`'A'`), `string` uvozovky (`"A"`). `"5" + 5` vytvoří text `"55"`, nikoli součet. `decimal cena = 19.90;` je chyba – správně `19.90m`.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/builtin-types/built-in-types).
 
 ---
 
@@ -240,9 +243,11 @@ Formátování mění pouze výpis, nikoli hodnotu proměnné.
 
 > **Pozor:** `^` není mocnina. Pro mocninu použij `Math.Pow(x, 2)` nebo `x * x`. Záměna `x += 5` a `x =+ 5` je častá chyba; druhý zápis přiřadí kladnou pětku.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/operators/arithmetic-operators).
+
 ---
 
-# 4. Podmínky – if, else, else if
+# 4. Podmínky if, else, else if
 
 **Podmínka** je logický výraz s výsledkem `true` nebo `false`. Podle výsledku program zvolí, který blok kódu provede.
 
@@ -297,6 +302,8 @@ Podmínky `else if` se kontrolují shora dolů a provede se první splněná vě
 
 > **Pozor:** `=` přiřazuje, `==` porovnává. Za `if (podminka)` nepiš středník. Rozsah 1 až 5 zapiš `x >= 1 && x <= 5`, nikoli `1 <= x <= 5`.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/statements/selection-statements).
+
 ---
 
 # 5. Podmínka switch
@@ -342,6 +349,9 @@ string obdobi = mesic switch
 ```
 
 > **Pozor:** V běžném `switch` se píše `case 1:` (dvojtečka), ve switch výrazu se větve oddělují čárkami. Nezapomeň na středník za ukončovací závorkou switch výrazu.
+
+Více informací: [Microsoft Learn (if, switch)](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/statements/selection-statements), [Microsoft Learn (switch)](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/operators/switch-expression).
+Více informací: [Microsoft Learn]().
 
 ---
 
@@ -402,6 +412,8 @@ for (int radek = 1; radek <= 3; radek++)
 
 > **Pozor:** Středník hned za hlavičkou `for` vytvoří prázdný cyklus. Dávej pozor na `i < n` versus `i <= n`, na směr změny a na to, aby se součet nevynuloval uvnitř cyklu.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/statements/iteration-statements).
+
 ---
 
 # 7. Cykly while a do-while
@@ -459,6 +471,8 @@ else
 
 > **Nekonečný cyklus:** Pokud se v těle nemění proměnná, která ovlivňuje podmínku, cyklus nemusí skončit. Pozor také na `continue` umístěné před zvýšení řídicí proměnné.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/statements/iteration-statements).
+
 ---
 
 # 8. Generování náhodných čísel
@@ -489,6 +503,8 @@ int hod = Random.Shared.Next(1, 7); // sdílený generátor (.NET 6+)
 `NextDouble() < 0.3` nastane přibližně ve 30 % případů.
 
 > **Pozor:** `rnd.Next(1, 6)` nikdy nevrátí šestku. Nevytvářej nový `Random` pro každé číslo uvnitř cyklu. `NextDouble() * 6` není hod kostkou – vrací desetinné číslo.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/api/system.random).
 
 ---
 
@@ -547,6 +563,8 @@ static long Faktorial(int n)
 Rekurze bývá elegantní, ale jednoduché úlohy lze často řešit rychleji a bezpečněji cyklem.
 
 > **Pozor:** Každá možná cesta funkcí musí vrátit hodnotu. Kód za `return` se už neprovede. Statická lokální funkce nevidí proměnné hlavního programu – předej jí je jako argumenty.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/programming-guide/classes-and-structs/local-functions).
 
 ---
 
@@ -616,6 +634,8 @@ VykresliCaru(5, '*'); // 5 hvězdiček
 ```
 
 > **Pozor:** `ref` a `out` musí být v hlavičce i při volání. Proměnná pro `ref` musí být předem inicializovaná. Procedura `void` nic nevrací, její výsledek nelze uložit do proměnné.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/keywords/method-parameters).
 
 ---
 
@@ -688,6 +708,8 @@ string vysledek = sb.ToString();
 ```
 
 > **Pozor:** `text.ToUpper();` samo o sobě text nezmění – ulož `text = text.ToUpper();`. Index posledního znaku je `Length - 1`. U `Substring(start, delka)` je druhý parametr délka, nikoli koncový index. Rozlišuj `'a'` a `"a"`.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/programming-guide/strings/).
 
 ---
 
@@ -791,6 +813,8 @@ Pole je **referenční typ**. Předání pole do metody zpřístupní stejné po
 
 > **Pozor:** Používej `i < pole.Length`, nikoli `i <= pole.Length`. První index je 0, poslední `Length - 1`. `Length` nemá závorky. `Console.WriteLine(pole)` nevypíše jednotlivé prvky; použij cyklus nebo `string.Join`. Průměr počítej desetinně: `(double)soucet / pole.Length`.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/builtin-types/arrays).
+
 ---
 
 # 13. Textové soubory
@@ -882,6 +906,8 @@ catch (IOException ex)
 
 > **Pozor:** `WriteAllText` přepíše původní obsah; pro připsání použij `AppendAllText`. Nezapomeň na konec řádku při přidávání. U `StreamWriter` a `StreamReader` používej `using`. Relativní cesta se nehledá vedle `Program.cs`, ale v pracovní složce programu.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/standard/io/).
+
 ---
 
 # 14. Vícerozměrná pole – matice
@@ -942,6 +968,9 @@ znamky[2] = new int[] { 2 };
 
 > **Pozor:** Matice `int[,]` používá `m[r, s]`; zubaté pole `int[][]` používá `z[r][s]`. Nezaměň `GetLength(0)` a `GetLength(1)`. `Length` u matice není počet řádků.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/builtin-types/arrays).
+
+
 ---
 
 # 15. Struktury – struct
@@ -1001,6 +1030,8 @@ struct Zbozi
 
 > **Pozor:** Změna kopie struktury nezmění původní hodnotu. Pro změnu původní proměnné použij `ref`, nebo vrať novou strukturu. Při použití struktury bez `new` musíš přiřadit hodnotu všem položkám.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/builtin-types/struct).
+
 ---
 
 # 16. Výčtový typ – enum
@@ -1032,6 +1063,8 @@ enum Den
 - S výčtem lze pracovat v `switch`.
 
 > **Pozor:** Přetypování čísla na enum samo nekontroluje, zda člen existuje. Použij `Enum.IsDefined`. Při převodu enum → int je nutné explicitní přetypování.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/builtin-types/enum).
 
 ---
 
@@ -1127,6 +1160,8 @@ Console.WriteLine($"Trvalo to {stopky.Elapsed.TotalSeconds:F2} s");
 
 > **Pozor:** Nezapomeň ukládat výsledek `AddDays()` a podobných metod. `MM` znamená měsíc, `mm` minuty; `HH` je hodina 0–23. Rozlišuj `Days` a `TotalDays`.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/standard/base-types/custom-date-and-time-format-strings).
+
 ---
 
 # 18. Třída
@@ -1176,6 +1211,8 @@ Každý objekt má vlastní hodnoty datových členů. Metoda zavolaná na `pes1
 V programu s příkazy nejvyšší úrovně se deklarace třídy píše až za hlavní program a lokální funkce, obvykle na konec `Program.cs`. Ve větším projektu má každá třída vlastní soubor, například `Pes.cs` (Visual Studio → Přidat → Třída).
 
 > **Pozor:** `Pes pes;` pouze deklaruje proměnnou. Objekt vytvoří až `new Pes()`. Bez `public` nemusí být člen přístupný z hlavního programu. Metodu objektu volej přes instanci, např. `pes1.Stekej();`.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/fundamentals/types/classes).
 
 ---
 
@@ -1246,6 +1283,8 @@ static void Vylepsi(Auto auto, int oKolik)
 
 > **Pozor:** `Auto[] auta = new Auto[3]` obsahuje zpočátku tři hodnoty `null`. `b = a` nevytváří kopii objektu. Před použitím objektu, který může být `null`, proveď kontrolu.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/fundamentals/object-oriented/objects).
+
 ---
 
 # 20. Datové členy třídy
@@ -1311,6 +1350,8 @@ Při výpočtech a výpisu procházej jen prvky od `0` do `PocetMinci - 1`, ne c
 
 > **Pozor:** Co si má objekt pamatovat, patří do datového členu, ne do lokální proměnné metody. Nepoužívej `null` text bez kontroly. Konstantu přistupuj přes třídu, nikoli objekt.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/programming-guide/classes-and-structs/fields).
+
 ---
 
 # 21. Vlastnosti a zapouzdření
@@ -1360,6 +1401,8 @@ class Obdelnik
 | `{ get; }` | ano | ne |
 
 > **Pozor:** V `set` musíš přiřazovat do datového členu (`_vek = value`), ne znovu do vlastnosti (`Vek = value`) – vznikla by nekonečná rekurze. Vlastnosti se pojmenovávají PascalCase, soukromé datové členy obvykle `_camelCase`.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/programming-guide/classes-and-structs/properties).
 
 ---
 
@@ -1411,6 +1454,8 @@ class Plochy
 Metody se musí lišit parametry. Pouze jiný návratový typ nestačí.
 
 > **Pozor:** Při volání metody nezapomeň na závorky: `o.Obsah()`. Bez přepsání `ToString()` výpis objektu zobrazí název typu. Funkce s návratovou hodnotou musí vracet hodnotu ve všech možných větvích.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/programming-guide/classes-and-structs/methods).
 
 ---
 
@@ -1485,6 +1530,8 @@ Vlastnost pouze s `get` lze nastavit v konstruktoru, ale po vytvoření objektu 
 
 > **Pozor:** Konstruktor nesmí mít návratový typ. Po přidání konstruktoru s parametry je nutné napsat i bezparametrický konstruktor, pokud ho chceš používat. Při shodě názvu parametru a členu používej `this.clen = clen`.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/programming-guide/classes-and-structs/constructors).
+
 ---
 
 # 24. Destruktory, GC a IDisposable
@@ -1538,6 +1585,8 @@ using Pripojeni db = new Pripojeni();
 
 > **Pozor:** Přiřazení `null` objekt ihned neodstraní – pouze zruší odkaz. Nespoléhej na finalizér pro včasné zavření souboru; používej `using` / `Dispose()`. Po zavolání `Dispose()` s prostředkem dál nepracuj.
 
+Více informací: [Microsoft Learn (finalizéry)](https://learn.microsoft.com/cs-cz/dotnet/csharp/programming-guide/classes-and-structs/finalizers), [Microsoft Learn (příkaz using)](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/statements/using).
+
 ---
 
 # 25. Přístupové modifikátory
@@ -1578,6 +1627,8 @@ Vlastnost může mít různé modifikátory pro čtení a zápis: `public int Bo
 
 > **Pozor:** Neřeš chybu nepřístupného členu tím, že uděláš všechno `public`. Raději nabídni veřejnou metodu nebo vlastnost s kontrolou hodnoty. Chyba CS0122 znamená, že člen není přístupný.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers).
+
 ---
 
 # 26. Statické členy – static
@@ -1616,6 +1667,8 @@ static class Geometrie
 - Statická metoda nemá konkrétní objekt, proto může přímo používat pouze statické členy.
 
 > **Pozor:** Statický člen volej přes třídu, ne přes objekt (`Hrac.Rekord`). Statická metoda nemůže přímo přistupovat k instančnímu členu – chyba CS0120. Statická třída se nevytváří přes `new`.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/programming-guide/classes-and-structs/static-classes-and-static-class-members).
 
 ---
 # 27. Výjimky – try/catch
@@ -1686,6 +1739,8 @@ Výjimky používej pro chybové situace. Co lze jednoduše ověřit předem, zk
 
 > **Pozor:** Neschovávej chybu prázdným `catch { }`. Konkrétní výjimky musí být před obecným `Exception`. Proměnná vytvořená uvnitř `try` není vidět v `catch` ani za blokem. Systémové `Message` bývá technické a uživateli nemusí být srozumitelné.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/statements/exception-handling-statements).
+
 ---
 
 # 28. Abstrakce objektů a UML
@@ -1729,6 +1784,8 @@ V UML se typ píše za název a dvojtečku: `cena : decimal`. V C# se typ píše
 Vztahy mezi třídami mohou mít násobnost, např. jeden košík obsahuje `0..*` produktů.
 
 > **Pozor:** Nedělej jednu obří třídu, která zajišťuje vše. Rozděl odpovědnosti mezi objekty. Nepodstatné vlastnosti reálné věci do modelu nezařazuj.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/fundamentals/tutorials/oop).
 
 ---
 
@@ -1795,6 +1852,8 @@ class Vez : Figurka
 
 > **Pozor:** Pokud předek nemá bezparametrický konstruktor, potomek musí zavolat správný konstruktor přes `base(...)`. `private` člen předka není dostupný potomkovi. Z abstraktní třídy nelze vytvořit objekt. C# nepovoluje dědění z více tříd.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/fundamentals/object-oriented/inheritance).
+
 ---
 
 # 30. Polymorfismus
@@ -1849,6 +1908,8 @@ foreach (Nastroj n in kapela)
 
 > **Pozor:** Bez `virtual` v předkovi nelze metodu přepsat. Metodu existující pouze v potomkovi nelze zavolat přes referenci předka bez ověření typu. Výsledek `as` vždy kontroluj na `null`.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/fundamentals/object-oriented/polymorphism).
+
 ---
 
 # 31. Přetěžování operátorů
@@ -1882,6 +1943,8 @@ class Vektor
 Přetížení má smysl, když je význam operátoru přirozený (např. sčítání vektorů). Nemá smysl používat `+` pro nesouvisející operaci.
 
 > **Pozor:** Operátor musí být `public static`. `==` a `!=` se definují společně. Operátor obvykle vrací nový objekt, nemění původní. Pro `v * 2` a `2 * v` může být potřeba definovat obě pořadí operandů.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/operators/operator-overloading).
 
 ---
 
@@ -1939,6 +2002,8 @@ class Student : IComparable<Student>
 `CompareTo()` vrací záporné číslo (tento objekt je před), `0` (rovnost) nebo kladné číslo (tento objekt je za). Potom lze použít `Array.Sort()`.
 
 > **Pozor:** Implementované metody musí být `public`. Nezapomeň doplnit všechny členy rozhraní. Třídu předka uváděj před rozhraními.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/fundamentals/types/interfaces).
 
 ---
 
@@ -2019,6 +2084,8 @@ Událost nemá-li odběratele obsahuje `null`; proto se používá `?.Invoke()`.
 
 > **Pozor:** Při přiřazení metody do delegátu se nepíší závorky (`op = Secti`, nikoli `op = Secti()`). U `Func` je poslední typový parametr návratový typ. `=` přepíše dosavadní metody, `+=` přidá další. Událost vyvolávej přes `?.Invoke()`.
 
+Více informací: [Microsoft Learn (delegati)](https://learn.microsoft.com/cs-cz/dotnet/csharp/programming-guide/delegates/), [Microsoft Learn (lambda)](https://learn.microsoft.com/cs-cz/dotnet/csharp/language-reference/operators/lambda-expressions).
+
 ---
 
 # 34. Seznam – List a ArrayList
@@ -2082,6 +2149,8 @@ int odebrano = zaci.RemoveAll(z => z.Prumer > 2.5);
 `ArrayList` vyžaduje `using System.Collections;`. Pro běžný nový kód používej `List<T>`.
 
 > **Pozor:** U seznamu je `Count`, nikoli `Length`. `Remove(3)` odebere hodnotu 3; `RemoveAt(3)` odebere prvek na indexu 3. Při průchodu `foreach` seznam neměň. Indexy jsou `0` až `Count - 1`.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/api/system.collections.generic.list-1).
 
 ---
 
@@ -2153,6 +2222,8 @@ foreach (char znak in "abrakadabra")
 ```
 
 > **Pozor:** `Add` selže, pokud klíč už existuje. Před čtením ověř klíč přes `ContainsKey` nebo použij `TryGetValue`. Textové klíče rozlišují velikost písmen (`"Praha"` a `"praha"`). Slovník neměň během `foreach`.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/api/system.collections.generic.dictionary-2).
 
 ---
 
@@ -2247,6 +2318,8 @@ Další testy bez změny množiny: `IsSubsetOf`, `Overlaps`, `SetEquals`.
 
 > **Pozor:** `Dequeue()`, `Pop()` a `Peek()` na prázdné kolekci vyhodí `InvalidOperationException`. `HashSet` nemá indexy a jeho pořadí není zaručeno. Metody `UnionWith`, `IntersectWith` a `ExceptWith` mění původní množinu – chceš-li zachovat originál, vytvoř kopii. Během `foreach` kolekci neměň. Prioritní fronta při shodné prioritě nezaručuje pořadí vložení.
 
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/standard/collections/).
+
 ---
 
 # 37. Genericita a generické metody
@@ -2322,6 +2395,8 @@ Omezení lze kombinovat, např. `where T : class, new()`. U generické třídy s
 U neomezeného `T` nelze obecně použít `==`; pro porovnání hodnot lze použít `Equals()`.
 
 > **Pozor:** Typový parametr patří za název metody (`VypisPole<T>`). Omezení `where` patří za seznam parametrů a před tělo metody. Pro porovnávání použij `IComparable<T>` a `CompareTo()`.
+
+Více informací: [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/csharp/fundamentals/types/generics).
 
 ---
 
