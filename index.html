@@ -746,12 +746,12 @@
     .kralik-walker {
       position: fixed;
       z-index: 2;
-      left: 70vw;
-      bottom: 0px;
-      width: clamp(56px, 8vw, 88px);
+      left: 0;
+      bottom: 0;
+      width: 80px;
       pointer-events: none;
     }
-    .kralik { display: block; width: 100%; height: auto; }
+    .kralik { display: block; width: 100%; max-height: 160px; height: auto; object-fit: contain; }
 
     /* Responsive */
     @media (max-width: 820px) {
@@ -861,10 +861,15 @@
         function walkKralik(time) {
           if (previousTime) {
             const elapsed = Math.min((time - previousTime) / 1000, 0.05);
-            const maxPosition = Math.max(
-              0,
-              window.innerWidth - 12 - window.innerWidth * (7 / 10) - kralikWalker.offsetWidth
-            );
+            const edgeGap = 12;
+            const corridorStart = window.innerWidth <= 820
+              ? edgeGap
+              : Math.min(
+                Math.round(window.innerWidth * 0.7),
+                window.innerWidth - kralikWalker.offsetWidth - edgeGap
+              );
+            const maxPosition = Math.max(0, window.innerWidth - edgeGap - corridorStart - kralikWalker.offsetWidth);
+            kralikWalker.style.left = `${corridorStart}px`;
             if (maxPosition === 0) {
               position = 0;
             } else {
